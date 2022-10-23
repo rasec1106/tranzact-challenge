@@ -1,3 +1,94 @@
-body{
-    background-color: aqua;
+body {
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  padding: 0 30px;
+}
+h1 {
+  text-align: center;
+  margin: 30px 0;
+}
+#results {
+  width: 100%;
+}
+.flex-container {
+  display: flex;
+  width: 100%;
+  border: solid 2px;
+  border-radius: 5px;
+  min-height: 500px;
+}
+.table-row {
+  width: 100%;
+}
+.table-column {
+  width: 80%;
+  margin: auto;
+  padding: 15px;
+}
+.header .table-column {
+  background-color: #183862;
+  border-radius: 5px;
+  color: white;
+}
+.left-side {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.right-side {
+  width: 70%;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.header {
+  text-align: center;
+  display: flex;
+}
+.fixed-height {
+  height: 80px;
+}
+.input {
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.error-message {
+  text-align: center;
+  margin: 40px;
+  font-size: large;
+}
+.submit-btn {
+  background-color: #3c97aa;
+  width: 80%;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.form-alert {
+  height: 30px;
+  color: red;
+}
+.form-row {
+  padding: 10px;
+  display: flex;
+}
+.form-column {
+  width: fit-content;
+  margin-right: 40px;
+}
+label {
+  display: inline-block;
+  width: 100px;
 }

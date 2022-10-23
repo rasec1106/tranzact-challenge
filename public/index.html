@@ -6,98 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tranzact Challenge</title>
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/loader.css" />
+    <script type="module" src="./scripts/main.js"></script>
   </head>
   <body>
-    <h1>Prueba</h1>
+    <h1>Premium Calculator</h1>
     <main>
       <section>
-        <form class="form" action="/api/plans" method="post">
+        <form class="form">
           <div class="form-row">
-            <label for="name">Enter name:</label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Name of Plan"
-            />
+            <label for="birth-date">Date of birth:</label>
+            <input id="birth-date" type="date" name="birth-date" />
           </div>
           <div class="form-row">
-            <label for="description">Enter description:</label>
-            <input
-              id="description"
-              type="text"
-              name="description"
-              placeholder="Description of Plan"
-            />
+            <div class="form-column">
+              <label for="state">State:</label>
+              <select id="state" name="state">
+                <option>Type or select</option>
+              </select>
+            </div>
+            <div class="form-column">
+              <label for="plan">Plan:</label>
+              <select id="plan" name="plan">
+                <option>Type or select</option>
+              </select>
+            </div>
           </div>
           <div class="form-row">
-            <label for="code">Enter code:</label>
+            <label for="age">Age:</label>
             <input
-              id="code"
+              id="age"
               type="text"
-              name="code"
-              placeholder="Code of Plan"
+              name="age"
+              placeholder="Your age"
+              disabled
             />
           </div>
-          <small class="form-alert"></small>
-          <button id="submit-btn" type="submit" class="block submit-btn">
-            Submit
-          </button>
+          <div id="alert" class="form-alert"></div>
+
+          <div class="flex-container">
+            <div class="left-side">
+              <div class="fixed-height"></div>
+              <button type="button" id="submit-btn" class="block submit-btn">
+                Get premium
+              </button>
+              <div class="form-row">
+                <label for="plan">Period:</label>
+                <select id="plan" name="plan">
+                  <option value="0">Select</option>
+                  <option value="1">Monthly</option>
+                  <option value="4">Quarterly</option>
+                  <option value="6">Semi-Annual</option>
+                  <option value="12">Annual</option>
+                </select>
+              </div>
+            </div>
+            <div class="right-side">
+              <div class="header fixed-height">
+                <div class="table-row grid-4">
+                  <div class="table-column">Carrier</div>
+                  <div class="table-column">Premium</div>
+                  <div class="table-column">Anual</div>
+                  <div class="table-column">Monthly</div>
+                </div>
+              </div>
+              <div id="content" class="content">
+                <div id="results"></div>
+              </div>
+            </div>
+          </div>
         </form>
-        <div id="results"></div>
       </section>
     </main>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script type="module" src="./scripts/main.js"></script> -->
-    <script>
-      const results = document.getElementById('results')
-
-      const fetchData = async (url) => {
-        try {
-          const data = await axios.get(url)
-          const people = data.data.map((person) => {
-            return `<h5>${person.name}</h5>`
-          })
-          results.innerHTML = people.join('')
-        } catch (error) {
-          results.innerHTML =
-            '<div class="alert alert-danger">Can\'t fetch data</div>'
-        }
-      }
-      fetchData('/api/plans')
-
-      // submit form
-      const btn = document.getElementById('submit-btn')
-      const name = document.getElementById('name')
-      const description = document.getElementById('description')
-      const code = document.getElementById('code')
-
-      const formAlert = document.querySelector('.form-alert')
-
-      btn.addEventListener('click', async (e) => {
-        e.preventDefault()
-        const nameValue = name.value
-        const descriptionValue = description.value
-        const codeValue = code.value
-        try {
-          const data = await axios.post('/api/plans', {
-            name: nameValue,
-            description: descriptionValue,
-            code: codeValue,
-          })
-          const h5 = document.createElement('h5')
-          h5.textContent = data.name
-          results.appendChild(h5)
-
-          name.value = ''
-          description.value = ''
-          code.value = ''
-          formAlert.textContent = ''
-          fetchData('/api/plans')
-        } catch (error) {
-          formAlert.textContent = error.response.data
-        }
-      })
-    </script>
   </body>
 </html>

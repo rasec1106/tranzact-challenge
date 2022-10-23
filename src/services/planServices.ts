@@ -1,11 +1,16 @@
 import { PlanEntry, NewPlanEntry } from '../types'
 import plansData from './plans.json'
 
-const plans: PlanEntry[] = plansData as PlanEntry[]
+const initialPlans: PlanEntry[] = plansData as PlanEntry[]
+const plans: PlanEntry[] = initialPlans.map(plan => plan)
 export const getEntries = (): PlanEntry[] => plans
 
 export const findById = (id: number): PlanEntry | undefined => {
   return plans.find(p => p.id === id)
+}
+
+export const findByCode = (code: string): PlanEntry | undefined => {
+  return plans.find(p => p.code === code)
 }
 
 export const addPlan = (newPlanEntry: NewPlanEntry): PlanEntry => {
@@ -29,4 +34,12 @@ export const deletePlan = (id: number): PlanEntry | undefined => {
     return plans.splice(deletingPlanIndex, 1)[0]
   }
   return undefined
+}
+
+export const resetPlans = (): PlanEntry[] => {
+  plans.length = 0
+  initialPlans.forEach((plan, index) => {
+    plans[index] = plan
+  })
+  return plans
 }

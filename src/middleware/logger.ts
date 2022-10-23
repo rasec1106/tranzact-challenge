@@ -1,5 +1,5 @@
-export const logger = (req: any, res: any, next: any): undefined => {
-  console.log('Middleware working', req, res)
+export const logger = (req: any, _res: any, next: any): undefined => {
+  console.log('Middleware working', req.body)
   next()
   return undefined
 }
