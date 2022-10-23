@@ -1,0 +1,194 @@
+[
+  {
+    "id": 3,
+    "carrier": "Qwerty",
+    "plan": ["A", "C"],
+    "state": "NY",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 120.99
+  },
+  {
+    "id": 1,
+    "carrier": "Qwerty",
+    "plan": ["A"],
+    "state": "NY",
+    "monthOfBirth": "September",
+    "ageRange": {
+      "min": 21,
+      "max": 45
+    },
+    "premium": 150
+  },
+  {
+    "id": 2,
+    "carrier": "Qwerty",
+    "plan": ["B"],
+    "state": "NY",
+    "monthOfBirth": "January",
+    "ageRange": {
+      "min": 46,
+      "max": 65
+    },
+    "premium": 200.5
+  },
+  {
+    "id": 4,
+    "carrier": "Qwerty",
+    "plan": ["A"],
+    "state": "AL",
+    "monthOfBirth": "November",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 85.5
+  },
+  {
+    "id": 5,
+    "carrier": "Qwerty",
+    "plan": ["C"],
+    "state": "AL",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 100
+  },
+  {
+    "id": 6,
+    "carrier": "Qwerty",
+    "plan": ["A"],
+    "state": "AK",
+    "monthOfBirth": "December",
+    "ageRange": {
+      "min": 65,
+      "max": 120
+    },
+    "premium": 175.2
+  },
+  {
+    "id": 7,
+    "carrier": "Qwerty",
+    "plan": ["A"],
+    "state": "AK",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 64
+    },
+    "premium": 125.16
+  },
+  {
+    "id": 8,
+    "carrier": "Qwerty",
+    "plan": ["B"],
+    "state": "AK",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 100.8
+  },
+  {
+    "id": 9,
+    "carrier": "Qwerty",
+    "plan": ["A", "C"],
+    "state": "*",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 90
+  },
+  {
+    "id": 10,
+    "carrier": "Asdf",
+    "plan": ["A"],
+    "state": "NY",
+    "monthOfBirth": "October",
+    "ageRange": {
+      "min": 21,
+      "max": 65
+    },
+    "premium": 150
+  },
+  {
+    "id": 11,
+    "carrier": "Asdf",
+    "plan": ["B"],
+    "state": "NY",
+    "monthOfBirth": "January",
+    "ageRange": {
+      "min": 46,
+      "max": 65
+    },
+    "premium": 184.5
+  },
+  {
+    "id": 12,
+    "carrier": "Asdf",
+    "plan": ["A"],
+    "state": "NY",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 129.95
+  },
+  {
+    "id": 13,
+    "carrier": "Asdf",
+    "plan": ["A"],
+    "state": "AL",
+    "monthOfBirth": "November",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 84.5
+  },
+  {
+    "id": 14,
+    "carrier": "Asdf",
+    "plan": ["B"],
+    "state": "WY",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 100
+  },
+  {
+    "id": 15,
+    "carrier": "Asdf",
+    "plan": ["B", "C"],
+    "state": "AK",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 100.8
+  },
+  {
+    "id": 16,
+    "carrier": "Asdf",
+    "plan": ["A", "C"],
+    "state": "*",
+    "monthOfBirth": "*",
+    "ageRange": {
+      "min": 18,
+      "max": 65
+    },
+    "premium": 89.99
+  }
+]

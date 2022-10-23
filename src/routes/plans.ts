@@ -56,4 +56,8 @@ router.delete('/:id', (req, res) => {
   }
 })
 
+router.post('/reset', (_req, res) => {
+  res.send(planServices.resetPlans())
+})
+
 export default router
