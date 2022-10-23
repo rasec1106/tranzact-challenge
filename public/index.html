@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tranzact Challenge</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <h1>Prueba</h1>
+    <main>
+      <section>
+        <form class="form" action="/api/plans" method="post">
+          <div class="form-row">
+            <label for="name">Enter name:</label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              placeholder="Name of Plan"
+            />
+          </div>
+          <div class="form-row">
+            <label for="description">Enter description:</label>
+            <input
+              id="description"
+              type="text"
+              name="description"
+              placeholder="Description of Plan"
+            />
+          </div>
+          <div class="form-row">
+            <label for="code">Enter code:</label>
+            <input
+              id="code"
+              type="text"
+              name="code"
+              placeholder="Code of Plan"
+            />
+          </div>
+          <small class="form-alert"></small>
+          <button id="submit-btn" type="submit" class="block submit-btn">
+            Submit
+          </button>
+        </form>
+        <div id="results"></div>
+      </section>
+    </main>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script type="module" src="./scripts/main.js"></script> -->
+    <script>
+      const results = document.getElementById('results')
+
+      const fetchData = async (url) => {
+        try {
+          const data = await axios.get(url)
+          const people = data.data.map((person) => {
+            return `<h5>${person.name}</h5>`
+          })
+          results.innerHTML = people.join('')
+        } catch (error) {
+          results.innerHTML =
+            '<div class="alert alert-danger">Can\'t fetch data</div>'
+        }
+      }
+      fetchData('/api/plans')
+
+      // submit form
+      const btn = document.getElementById('submit-btn')
+      const name = document.getElementById('name')
+      const description = document.getElementById('description')
+      const code = document.getElementById('code')
+
+      const formAlert = document.querySelector('.form-alert')
+
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault()
+        const nameValue = name.value
+        const descriptionValue = description.value
+        const codeValue = code.value
+        try {
+          const data = await axios.post('/api/plans', {
+            name: nameValue,
+            description: descriptionValue,
+            code: codeValue,
+          })
+          const h5 = document.createElement('h5')
+          h5.textContent = data.name
+          results.appendChild(h5)
+
+          name.value = ''
+          description.value = ''
+          code.value = ''
+          formAlert.textContent = ''
+          fetchData('/api/plans')
+        } catch (error) {
+          formAlert.textContent = error.response.data
+        }
+      })
+    </script>
+  </body>
+</html>

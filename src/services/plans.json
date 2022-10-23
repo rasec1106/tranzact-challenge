@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "Plan A",
+        "description": "This is the plan A",
+        "code": "A"
+    },
+    {
+        "id": 2,
+        "name": "Plan B",
+        "description": "This is the plan B",
+        "code": "B"
+    },
+    {
+        "id": 3,
+        "name": "Plan C",
+        "description": "This is the plan C",
+        "code": "C"
+    },
+    {
+        "id": 4,
+        "name": "Plan D",
+        "description": "This is the plan D",
+        "code": "D"
+    }
+  ]
+  
