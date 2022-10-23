@@ -23,24 +23,14 @@ router.post('/calculatePremium', (req, res) => {
   try {
     const newPremiumRequest = toPremiumRequest(req.body)
     const premiumEntries = premiumServices.searchEntries(newPremiumRequest)
-    res.json(premiumEntries)
+    res.json({ success: true, results: premiumEntries })
   } catch (e: unknown) {
     (e instanceof Error)
-      ? res.status(400).send(e.message)
-      : res.status(500).send('Oops! An unknown error has happened')
+      ? res.status(400).send({ success: false, message: e.message })
+      : res.status(500).send({ success: false, message: 'Oops! An unknown error has happened' })
   }
 })
-router.post('/calculatePremium2', (req, res) => {
-  try {
-    const newPremiumRequest = toPremiumRequest(req.body)
-    const premiumEntries = premiumServices.searchEntries(newPremiumRequest)
-    res.json(premiumEntries)
-  } catch (e: unknown) {
-    (e instanceof Error)
-      ? res.status(400).send(e.message)
-      : res.status(500).send('Oops! An unknown error has happened')
-  }
-})
+
 // router.put('/', (req, res) => {
 //   try {
 //     const currentPlan = toPlanEntry(req.body)

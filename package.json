@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": { "node": "16.18.0" },
+  "engines": {
+    "node": "16.18.0"
+  },
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "lint": "ts-standard",

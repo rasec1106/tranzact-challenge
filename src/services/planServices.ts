@@ -9,6 +9,10 @@ export const findById = (id: number): PlanEntry | undefined => {
   return plans.find(p => p.id === id)
 }
 
+export const findByCode = (code: string): PlanEntry | undefined => {
+  return plans.find(p => p.code === code)
+}
+
 export const addPlan = (newPlanEntry: NewPlanEntry): PlanEntry => {
   const newPlan = {
     id: Math.max(...plans.map(p => p.id)) + 1,

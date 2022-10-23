@@ -1,4 +1,5 @@
 import { Months, States } from './../enums'
+import { findByCode } from '../services/planServices'
 
 export const isString = (string: string): boolean => {
   return typeof string === 'string' && string.length > 0
@@ -18,4 +19,8 @@ export const isMonth = (month: any): boolean => {
 
 export const isState = (state: any): boolean => {
   return Object.values(States).includes(state)
+}
+
+export const isPlan = (planCode: any): boolean => {
+  return (findByCode(planCode) != null)
 }

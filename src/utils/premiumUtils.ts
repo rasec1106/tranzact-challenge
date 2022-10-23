@@ -1,9 +1,9 @@
 import { MonthNumbers } from './../enums'
 import { PremiumEntry, PremiumRequest, NonSensitiveInfoPremiumEntry } from './../types'
-import { isInteger, isString, isDate, isState } from './checkTypes'
+import { isInteger, isString, isDate, isState, isPlan } from './checkTypes'
 
 const parsePlan = (planFromRequest: any): string => {
-  if (!isString(planFromRequest)) {
+  if (!isString(planFromRequest) || !isPlan(planFromRequest)) {
     throw new Error('Incorrect or missing plan')
   }
   return planFromRequest
@@ -38,9 +38,9 @@ const getAge = (dateString: string): number => {
 }
 export const toPremiumRequest = (object: any): PremiumRequest => {
   const premiumRequest: PremiumRequest = {
-    plan: parsePlan(object.plan),
-    state: parseState(object.state),
     birthDate: parseBirthDate(object.birthDate),
+    state: parseState(object.state),
+    plan: parsePlan(object.plan),
     age: parseAge(object.age)
   }
   if (!validateAge(premiumRequest.age, premiumRequest.birthDate)) throw new Error('Age doesn\'t match with birth date')
@@ -82,6 +82,7 @@ export const sortPremiumsByCarrierStateMonth = (premiums: PremiumEntry[]): Premi
   let sortedPremiums = premiums
   // sort by carrier
   sortedPremiums = sortedPremiums.sort((a, b) => a.carrier > b.carrier ? 1 : a.carrier < b.carrier ? -1 : 0)
+  // sort by state
   sortedPremiums = sortedPremiums.sort((a, b) => {
     if (a.carrier === b.carrier) {
       if (a.state === '*') return 1
@@ -89,6 +90,7 @@ export const sortPremiumsByCarrierStateMonth = (premiums: PremiumEntry[]): Premi
     }
     return 0
   })
+  // sort by month
   sortedPremiums = sortedPremiums.sort((a, b) => {
     if (a.carrier === b.carrier) {
       if (a.state === b.state) {

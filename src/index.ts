@@ -1,6 +1,7 @@
 import express from 'express'
 import planRouter from './routes/plans'
 import premiumRouter from './routes/premiums'
+import stateRouter from './routes/states'
 import { logger } from './middleware/logger'
 import cors from 'cors'
 
@@ -19,6 +20,7 @@ app.use('/api', logger)
 // routing
 app.use('/api/plans', planRouter)
 app.use('/api/premium', premiumRouter)
+app.use('/api/states', stateRouter)
 // Error page
 app.all('*', (_req, res) => {
   res.status(404).send('Resource not found')
