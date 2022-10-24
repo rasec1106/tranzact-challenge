@@ -14,51 +14,71 @@
     <main>
       <section>
         <form class="form">
-          <div class="form-row">
-            <label for="birth-date">Date of birth:</label>
-            <input id="birth-date" type="date" name="birth-date" />
-          </div>
-          <div class="form-row">
-            <div class="form-column">
-              <label for="state">State:</label>
-              <select id="state" name="state">
-                <option>Type or select</option>
-              </select>
+          <div class="d-flex">
+            <div class="form-section">
+              <div class="form-row">
+                <div class="form-column">
+                  <label for="birth-date">Date of birth:</label>
+                  <input id="birth-date" type="date" name="birth-date" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-column">
+                  <label for="state">State:</label>
+                  <div class="select-dropdown">
+                    <select id="state" name="state">
+                      <option>Type or select</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-column">
+                  <label for="plan">Plan:</label>
+                  <div class="select-dropdown">
+                    <select id="plan" name="plan">
+                      <option>Type or select</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-column">
+                  <label for="age">Age:</label>
+                  <input
+                    id="age"
+                    class="disabled"
+                    type="text"
+                    name="age"
+                    value="0"
+                    disabled
+                  />
+                </div>
+              </div>
             </div>
-            <div class="form-column">
-              <label for="plan">Plan:</label>
-              <select id="plan" name="plan">
-                <option>Type or select</option>
-              </select>
+            <div class="image-section">
+              <img src="./images/tranzact.png" alt="Tranzact Logo" class="logo-img">
             </div>
           </div>
-          <div class="form-row">
-            <label for="age">Age:</label>
-            <input
-              id="age"
-              type="text"
-              name="age"
-              placeholder="Your age"
-              disabled
-            />
-          </div>
-          <div id="alert" class="form-alert"></div>
-
           <div class="flex-container">
             <div class="left-side">
-              <div class="fixed-height"></div>
+              <div class="header">
+                <div id="alert" class="form-alert fixed-height"></div>
+              </div>
               <button type="button" id="submit-btn" class="block submit-btn">
                 Get premium
               </button>
               <div class="form-row">
-                <label for="plan">Period:</label>
-                <select id="plan" name="plan">
-                  <option value="0">Select</option>
-                  <option value="1">Monthly</option>
-                  <option value="4">Quarterly</option>
-                  <option value="6">Semi-Annual</option>
-                  <option value="12">Annual</option>
-                </select>
+                <div class="form-column">
+                  <label class="period-lbl" for="period">Period:</label>
+                  <div class="select-dropdown">
+                    <select id="period" name="period">
+                      <option value="0">Select</option>
+                      <option value="1">Monthly</option>
+                      <option value="3">Quarterly</option>
+                      <option value="6">Semi-Annual</option>
+                      <option value="12">Annual</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="right-side">
@@ -66,7 +86,7 @@
                 <div class="table-row grid-4">
                   <div class="table-column">Carrier</div>
                   <div class="table-column">Premium</div>
-                  <div class="table-column">Anual</div>
+                  <div class="table-column">Annual</div>
                   <div class="table-column">Monthly</div>
                 </div>
               </div>

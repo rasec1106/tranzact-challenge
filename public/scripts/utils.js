@@ -7,20 +7,23 @@ function createInput (value) {
   return input
 }
 function createAnnualInput (value, period) {
-  return createInput(value)
+  if (period === 0) return createInput('Select a period')
+  return createInput(value * (12 / period))
 }
 function createMonthlyInput (value, period) {
-  return createInput(value)
+  if (period === 0) return createInput('Select a period')
+  return createInput(value / period)
 }
-function createRow (items) {
+function createRow (items, period) {
   const row = document.createElement('div')
   row.className += 'table-row grid-4'
-  Object.values(items).forEach(item => {
+  const values = Object.values(items)
+  values.forEach(item => {
     const input = createInput(item)
     row.appendChild(input)
   })
-  row.appendChild(createAnnualInput(0, 0))
-  row.appendChild(createMonthlyInput(0, 0))
+  row.appendChild(createAnnualInput(values[1], period))
+  row.appendChild(createMonthlyInput(values[1], period))
   return row
 }
 function createOption (value, label) {
@@ -52,11 +55,10 @@ function createLoader () {
 }
 
 const util = {
-  createRow: items => createRow(items),
+  createRow: (items, period) => createRow(items, period),
   createOption: (value, label) => createOption(value, label),
   createLoader: () => createLoader(),
-  createErrorMessage: () => createErrorMessage(),
-  setCarouselImages: images => console.log(images)
+  createErrorMessage: () => createErrorMessage()
 }
 
 export default util
