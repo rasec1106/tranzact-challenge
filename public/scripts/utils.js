@@ -8,11 +8,15 @@ function createInput (value) {
 }
 function createAnnualInput (value, period) {
   if (period === 0) return createInput('Select a period')
-  return createInput(value * (12 / period))
+  let result = value * (12 / period)
+  if (!Number.isInteger(result)) result = result.toFixed(2)
+  return createInput(result)
 }
 function createMonthlyInput (value, period) {
   if (period === 0) return createInput('Select a period')
-  return createInput(value / period)
+  let result = value / period
+  if (!Number.isInteger(result)) result = result.toFixed(2)
+  return createInput(result)
 }
 function createRow (items, period) {
   const row = document.createElement('div')
