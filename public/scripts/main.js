@@ -11,10 +11,29 @@ fetchPlans()
  * HANDLING EVENTS
  */
 addEventListenerToButton()
+addEventListenerToSelectPeriod()
 handleDateChange()
 /**
  * FUNCTIONS
  */
+function calculatePeriod () {
+  const period = document.getElementById('period').value
+  const results = document.getElementById('results')
+  console.log(results, period)
+  const children = results.children
+  for (let i = 0; i < children.length; i++) {
+    const premium = children[i].children[1].value
+    const annual = children[i].children[2]
+    const monthly = children[i].children[3]
+    if (+period === 0) {
+      annual.value = 'Select a period'
+      monthly.value = 'Select a period'
+    } else {
+      annual.value = premium * (12 / period)
+      monthly.value = premium / period
+    }
+  }
+}
 function handleDateChange () {
   const date = document.getElementById('birth-date')
   date.addEventListener('blur', () => calculateAge(date.value))
@@ -38,6 +57,10 @@ function addEventListenerToButton () {
   const button = document.getElementById('submit-btn')
   button.addEventListener('click', handleSubmitButton)
 }
+function addEventListenerToSelectPeriod () {
+  const select = document.getElementById('period')
+  select.addEventListener('change', calculatePeriod)
+}
 function handleSubmitButton () {
   const birthDate = document.getElementById('birth-date').value
   const state = document.getElementById('state').value
@@ -56,15 +79,16 @@ function calculatePremium (data) {
     if (response.success) {
       const loader = UTIL.createLoader()
       contentBox.insertBefore(loader, contentBox.firstChild)
-      // this is bad, we are just doing this to make the effect of loading
+      // this is bad, we are just doing this to make the loading effect
       setTimeout(() => {
         contentBox.removeChild(loader)
         const premiumEntries = response.results
         if (premiumEntries.length === 0) {
           results.appendChild(UTIL.createErrorMessage())
         } else {
+          const period = document.getElementById('period').value
           premiumEntries.forEach((item) => {
-            const row = UTIL.createRow(item)
+            const row = UTIL.createRow(item, +period)
             results.appendChild(row)
           })
         }
@@ -89,7 +113,7 @@ function fetchPlans () {
     const planSelect = document.getElementById('plan')
     const planEntries = response.results
     planEntries.forEach((item) => {
-      const option = UTIL.createOption(item.code, item.name)
+      const option = UTIL.createOption(item.code, item.code)
       planSelect.appendChild(option)
     })
   })
