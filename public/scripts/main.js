@@ -29,8 +29,12 @@ function calculatePeriod () {
       annual.value = 'Select a period'
       monthly.value = 'Select a period'
     } else {
-      annual.value = premium * (12 / period)
-      monthly.value = premium / period
+      let annualValue = premium * (12 / period)
+      if (!Number.isInteger(annualValue)) annualValue = annualValue.toFixed(2)
+      let monthlyValue = premium / period
+      if (!Number.isInteger(monthlyValue)) monthlyValue = monthlyValue.toFixed(2)
+      annual.value = annualValue
+      monthly.value = monthlyValue
     }
   }
 }
