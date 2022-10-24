@@ -26,4 +26,4 @@ export interface PremiumRequest {
 }
 
 export type NewPlanEntry = Omit<PlanEntry, 'id'>
-export type NonSensitiveInfoPremiumEntry = Pick<PremiumEntry, 'carrier' | 'premium'>
+export type PremiumResponse = Pick<PremiumEntry, 'carrier' | 'premium'>

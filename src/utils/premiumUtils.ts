@@ -1,5 +1,5 @@
 import { MonthNumbers } from './../enums'
-import { PremiumEntry, PremiumRequest, NonSensitiveInfoPremiumEntry } from './../types'
+import { PremiumEntry, PremiumRequest, PremiumResponse } from './../types'
 import { isInteger, isString, isDate, isState, isPlan } from './checkTypes'
 
 const parsePlan = (planFromRequest: any): string => {
@@ -46,8 +46,8 @@ export const toPremiumRequest = (object: any): PremiumRequest => {
   if (!validateAge(premiumRequest.age, premiumRequest.birthDate)) throw new Error('Age doesn\'t match with birth date')
   return premiumRequest
 }
-export const toPremiumResponse = (object: PremiumEntry): NonSensitiveInfoPremiumEntry => {
-  const premiumEntry: NonSensitiveInfoPremiumEntry = {
+export const toPremiumResponse = (object: PremiumEntry): PremiumResponse => {
+  const premiumEntry: PremiumResponse = {
     carrier: object.carrier,
     premium: object.premium
   }

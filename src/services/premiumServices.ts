@@ -9,7 +9,7 @@ import {
 import {
   PremiumRequest,
   PremiumEntry,
-  NonSensitiveInfoPremiumEntry
+  PremiumResponse
 } from '../types'
 import premiumData from './premiums.json'
 
@@ -17,7 +17,7 @@ const initialPremiums: PremiumEntry[] = premiumData as PremiumEntry[]
 const premiums: PremiumEntry[] = initialPremiums.map(premium => premium)
 export const getEntries = (): PremiumEntry[] => premiums
 
-export const searchEntries = (premiumRequest: PremiumRequest): NonSensitiveInfoPremiumEntry[] => {
+export const searchEntries = (premiumRequest: PremiumRequest): PremiumResponse[] => {
   const { birthDate, state, plan, age } = premiumRequest
   // sort to apply business logic correctly
   const sortedPremiums = sortPremiumsByCarrierStateMonth(premiums)
